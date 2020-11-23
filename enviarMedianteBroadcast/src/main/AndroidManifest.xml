@@ -11,8 +11,7 @@
         android:theme="@style/AppTheme">
         <service
             android:name=".ServicioContador"
-            android:enabled="true"
-            android:exported="true"></service>
+            android:enabled="true"/>
 
         <activity android:name=".MainActivity">
             <intent-filter>

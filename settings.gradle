@@ -1,2 +1,3 @@
-include ':app'
+include ':enviarMedianteInterfaz'
+include ':enviarMedianteBroadcast'
 rootProject.name = "EnviarInfoDesdeServicio"

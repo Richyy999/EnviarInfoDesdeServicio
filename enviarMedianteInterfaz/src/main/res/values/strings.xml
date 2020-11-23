@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">metodoGetter</string>
+    <string name="empezar_servicio">Empezar Servicio</string>
+    <string name="parar_servicio">Parar Servicio</string>
+</resources>
