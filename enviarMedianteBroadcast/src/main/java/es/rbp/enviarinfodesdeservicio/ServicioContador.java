@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -73,9 +74,10 @@ public class ServicioContador extends Service {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         handler.removeCallbacks(hiloContador);
         Log.i("ESTADO DEL SERVICIO", "DESTRUIDO");
+        Toast.makeText(this, "SERVICIO DESTRUIDO", Toast.LENGTH_SHORT).show();
+        super.onDestroy();
     }
 
     @Override

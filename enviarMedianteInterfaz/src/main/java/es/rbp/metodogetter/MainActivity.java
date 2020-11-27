@@ -12,9 +12,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Esta activity empieza o termina el {@link ServicioContador} y muestra el segundo actual del servicio
+ * <p>
+ * Para conectarse al servicio, hay que implementar la interfaz {@link ServiceConnection} y llamar al método {@link Context#bindService(Intent, ServiceConnection, int)}.
+ * Solo puede haber un cliente por servicio, por lo que hay que llamar al método {@link Context#unbindService(ServiceConnection)} cuando se detenga
+ * el activity para que cuando se cree otra vez poder conectarse al servicio de nuevo.
  *
  * @author Ricardo Bordería Pi
  */
@@ -52,8 +57,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        bindService(intent, this, Context.BIND_AUTO_CREATE);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unbindService(this);
+    }
+
+    @Override
     protected void onDestroy() {
         Log.i("ACTIVITY", "DESTRUIDO");
+        Toast.makeText(this, "ACTIVITY DESTRUIDO", Toast.LENGTH_SHORT).show();
         super.onDestroy();
     }
 
